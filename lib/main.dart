@@ -10,8 +10,8 @@ class Noteapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.light(),
-      home: Scaffold());
+      theme: ThemeData.dark(),
+      home: Scaffold(appBar: AppBar(backgroundColor: Colors.white,),));
   }
 }
 
