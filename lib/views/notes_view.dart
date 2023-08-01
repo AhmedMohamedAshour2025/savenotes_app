@@ -1,8 +1,12 @@
-import 'package:finalapp/views/widgets/custom_appbar.dart';
+import 'package:finalapp/cubits/notes_cubit/notes_cubit.dart';
+import 'package:finalapp/cubits/notes_cubit/notes_state.dart';
+
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'item_listview.dart';
+
+import 'notes_view_body.dart';
 import 'widgets/add_note_bottomsheet.dart';
 
 class NotesVeiw extends StatelessWidget {
@@ -14,8 +18,9 @@ class NotesVeiw extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            isScrollControlled: true,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16)),
             context: context,
             builder: (context) {
               return const AddNoteBottomSheet();
@@ -24,21 +29,9 @@ class NotesVeiw extends StatelessWidget {
         },
         child: const Icon(Icons.add),
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 35,
-            ),
-            CustomAppBar(
-              icon: Icons.search,
-              title: 'Notes',
-            ),
-            Expanded(child: ItemListView()),
-          ],
-        ),
-      ),
+      body:const NotesViewBody(),
     );
   }
 }
+
+
